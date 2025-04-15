@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Navegador {
     private String url;
-    public void setPagina() {
+    public void setPagina(String urlString) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite a URL da página: ");
         this.url = scanner.nextLine();

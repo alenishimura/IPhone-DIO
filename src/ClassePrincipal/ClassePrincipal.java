@@ -1,12 +1,11 @@
 package ClassePrincipal;
 
 import java.util.Scanner;
-
 import ClassesSecundárias.Navegador;
 import ClassesSecundárias.Reprodutor;
 import ClassesSecundárias.Telefone;
 import Interfaces.AparelhoTelefonico;
-import Interfaces.NavegadorInterface;
+import Interfaces.NavegadorInterface; 
 import Interfaces.ReprodutorInterface;
 
 public class ClassePrincipal {
@@ -26,7 +25,7 @@ public class ClassePrincipal {
                 break;
             case 2:
                 Navegador navegador = new Navegador();
-                navegador.setPagina("www.exemplo.com");
+                navegador.setPagina(String url);
                 navegador.adicionarNovaAba();
                 navegador.atualizarPagina();
                 break;
