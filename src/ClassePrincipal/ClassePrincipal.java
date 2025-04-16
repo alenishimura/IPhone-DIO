@@ -4,45 +4,58 @@ import java.util.Scanner;
 import ClassesSecundárias.Navegador;
 import ClassesSecundárias.Reprodutor;
 import ClassesSecundárias.Telefone;
-import Interfaces.AparelhoTelefonico;
-import Interfaces.NavegadorInterface; 
-import Interfaces.ReprodutorInterface;
 
 public class ClassePrincipal {
-    public static void main(String[] args) throws Exception {
-        System.out.println("Você está na tela inicial do IPhone, qual aplicativo você deseja abrir?");
-        System.out.println("1 - Telefone\n2 - Navegador\n3 - Reprodutor de Música\n4 - Sair");
-        
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int opcao = scanner.nextInt();
-        
-        switch (opcao) {
-            case 1:
-                Telefone telefone = new Telefone();
-                telefone.ligar();
-                telefone.atender();
-                telefone.iniciarCorreioVoz();
-                break;
-            case 2:
-                Navegador navegador = new Navegador();
-                navegador.setPagina(String url);
-                navegador.adicionarNovaAba();
-                navegador.atualizarPagina();
-                break;
-            case 3:
-                Reprodutor reprodutor = new Reprodutor();
-                reprodutor.setMusica("Música Exemplo");
-                reprodutor.tocar();
-                reprodutor.pausar();
-                break;
-            case 4:
-                System.out.println("Saindo do aplicativo...");
-                break;
-            default:
-                System.out.println("Opção inválida!");
-        }
-        
-        
+        boolean executando = true;
 
+        while (executando) {
+            System.out.println("\nVocê está na tela inicial do IPhone. Qual aplicativo você deseja abrir?");
+            System.out.println("1 - Telefone\n2 - Navegador\n3 - Reprodutor de Música\n4 - Sair");
+            System.out.print("Digite sua opção: ");
+
+            if (!scanner.hasNextInt()) {
+                System.out.println("Entrada inválida! Por favor, digite um número entre 1 e 4.");
+                scanner.next();
+                continue;
+            }
+
+            int opcao = scanner.nextInt();
+            scanner.nextLine(); 
+
+            switch (opcao) {
+                case 1:
+                    Telefone telefone = new Telefone();
+                    telefone.ligar();
+                    telefone.atender();
+                    telefone.iniciarCorreioVoz();
+                    break;
+
+                case 2:
+                    Navegador navegador = new Navegador();
+                    navegador.setPagina();
+                    navegador.adicionarNovaAba();
+                    navegador.atualizarPagina();
+                    break;
+
+                case 3:
+                    Reprodutor reprodutor = new Reprodutor();
+                    reprodutor.escolherMusica();
+                    reprodutor.tocar();
+                    reprodutor.pausar();
+                    break;
+
+                case 4:
+                    System.out.println("Saindo do aplicativo... Até logo!");
+                    executando = false;
+                    break;
+
+                default:
+                    System.out.println("Opção inválida! Por favor, escolha uma opção entre 1 e 4.");
+            }
+        }
+
+        scanner.close();
     }
 }
